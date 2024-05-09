@@ -27,21 +27,17 @@
   </div>
 </template>
 
-<script setup>
-import { onMounted } from 'vue'
-import { getAllUsers } from '@/api/Http'
+<script>
 import { useUserStore } from '@/store/userStore'
-
-const userStore = useUserStore()
-
-onMounted(async () => {
-  const users = await getAllUsers()
-  // Do something with users if needed
-})
-
-const selectUser = (user) => {
-  userStore.selectUser(user)
+export default {
+  setup() {
+    const userStore = useUserStore()
+    userStore.fetchUsers()
+    return {
+      selectedUser: userStore.selectedUser,
+      selectUser: userStore.selectUser,
+      users: userStore.users 
+    }
+  }
 }
-
-const selectedUser = userStore.selectedUser
 </script>
