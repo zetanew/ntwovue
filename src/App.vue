@@ -35,8 +35,8 @@ import { useUserStore } from '@/store/userStore'
 const userStore = useUserStore()
 
 onMounted(async () => {
-  const users = await getAllUsers()
-  // Do something with users if needed
+  const users = await getAllUsers() // Fetch users from API
+  localStorage.setItem('users', JSON.stringify(users)) // Save users to local storage
 })
 
 const selectUser = (user) => {
