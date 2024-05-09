@@ -17,7 +17,7 @@
       </div>
       <div v-else>
         <!-- Default Menu Item -->
-        <h2>Users</h2>
+        <h2>Users Default</h2>
       </div>
     </div>
     <!-- Main Content -->

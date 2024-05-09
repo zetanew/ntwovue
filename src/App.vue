@@ -8,7 +8,7 @@
           <h2>{{ selectedUser.name }}</h2>
           <!-- Other user details -->
         </div>
-        <!-- Menu Items -->
+         Menu Items 
         <ul>
           <li><router-link :to="`/todos/${selectedUser.id}`">Todos</router-link></li>
           <li><router-link :to="`/posts/${selectedUser.id}`">Posts</router-link></li>
@@ -17,7 +17,7 @@
       </div>
       <div v-else>
         <!-- Default Menu Item -->
-        <h2>Users</h2>
+        <h2>Users Icon</h2>
       </div>
     </div>
     <!-- Main Content -->
