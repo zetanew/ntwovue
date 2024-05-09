@@ -15,6 +15,7 @@ export default {
     UserCard
   },
   setup() {
+    
     const userStore = useUserStore()
     const users = computed(() => userStore.users)
     const loading = computed(() => userStore.loading)
