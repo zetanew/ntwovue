@@ -1,6 +1,6 @@
 <template>
   <div class="users grid grid-cols-3 gap-4">
-    <UserCard v-for="n in 10" :key="n" />
+    <UserCard v-for="user in users" :key="user.id" :user="user" />
   </div>
 </template>
 
@@ -15,8 +15,10 @@
     },
     setup() {
       const userStore = useUserStore()
-      const users = userStore.users
-  
+      const users = userStore.users;
+      console.log("users from Users.vue");
+      console.log(users);
+
       return {
         users
       }

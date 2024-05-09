@@ -8,12 +8,12 @@
       />
         <div class="w-fit transition-all transform duration-500">
           <h1 class="text-gray-600 dark:text-gray-200 font-bold">
-            Mary Phiri
+            {{ user.name }}
           </h1>
-          <p class="text-gray-400">Senior Developer</p>
+          <p class="text-gray-400">{{user.company.name}}</p>
           <a
             class="text-xs text-gray-500 dark:text-gray-200 group-hover:opacity-100 opacity-0 transform transition-all delay-300 duration-500">
-            mary@gmail.com
+            {{ user.email }}
           </a>
         </div>
       </div>
