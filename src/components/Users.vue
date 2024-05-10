@@ -1,7 +1,10 @@
 <template>
-  <div class="users grid grid-cols-3 gap-4">
-    <UserCard v-for="user in users" :key="user.id" :user="user" @click.native="selectUserAndNavigate(user)" v-if="!loading" />
-    <div v-else>Loading...</div>
+  <div>
+    <h1 class="text-2xl font-bold mb-4">All Users</h1>
+    <div class="users grid grid-cols-3 gap-4">
+      <UserCard v-for="user in users" :key="user.id" :user="user" @click.native="selectUserAndNavigate(user)" v-if="!loading" />
+      <div v-else>Loading...</div>
+    </div>
   </div>
 </template>
 
