@@ -11,8 +11,13 @@ export const useUserStore = defineStore({
     error: null
   }),
   actions: {
-    selectUser(user) {
-      this.selectedUser = user
+    async selectUser(user) {
+      try {
+        this.selectedUser = user
+      } catch (error) {
+        this.error = error
+        console.error('Error selecting user:', error)
+      }
     },
     async fetchUsers() {
       try {

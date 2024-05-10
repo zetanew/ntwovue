@@ -24,8 +24,9 @@ export default {
     const users = computed(() => userStore.users)
     const loading = computed(() => userStore.loading)
 
-    const selectUserAndNavigate = (user) => {
-      userStore.selectUser(user)
+    const selectUserAndNavigate = async (user) => {
+      await userStore.selectUser(user)
+      await userStore.fetchUserDetails(user.id)
       router.push({ name: 'Todo', params: { id: user.id } })
     }
 
