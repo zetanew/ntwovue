@@ -1,25 +1,30 @@
 <template>
   <div class="user-card">
-    <div
-      class="bg-gray-100 dark:bg-gray-700 relative shadow-xl overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform">
-      <div class="flex items-center gap-4">
-        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwyfHxhdmF0YXJ8ZW58MHwwfHx8MTY5MTg0NzYxMHww&ixlib=rb-4.0.3&q=80&w=1080"
+    <div class="bg-gray-100 relative shadow-xl overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform">
+      <div class="flex items-start gap-4">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwyfHxhdmF0YXJ8ZW58MHwwfHx8MTY9MTg0NzYxMHww&ixlib=rb-4.0.3&q=80&w=1080"
         class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center object-cover rounded-full transition-all duration-500 delay-500 transform"
-      />
+        />
         <div class="w-fit transition-all transform duration-500">
-          <h1 class="text-gray-600 dark:text-gray-200 font-bold">
+          <h1 class="text-purple-700 font-bold p-2">
             {{ user.name }}
           </h1>
-          <p class="text-gray-400">{{user.company.name}}</p>
-          <a
-            class="text-xs text-gray-500 dark:text-gray-200 group-hover:opacity-100 opacity-0 transform transition-all delay-300 duration-500">
-            {{ user.email }}
-          </a>
-        </div>
-      </div>
-      <div class="absolute group-hover:bottom-1 delay-300 -bottom-16 transition-all duration-500 bg-gray-600 dark:bg-gray-100 right-1 rounded-lg">
-        <div class="flex justify-evenly items-center gap-2 p-1 text-2xl text-white dark:text-gray-600">
-          <!-- SVGs here -->
+          <p class="text-purple-500 p-1">{{ user.email }}</p>
+          <p class="text-purple-400 p-1">{{ user.phone }}</p>
+          <div class="flex items-center mt-3">
+            <img :src="locationIcon" class="h-6 w-6 mr-2" />
+            <p class="text-gray-600">{{user.address.city}}</p>
+          </div>
+          <div class="flex items-center p-2">
+            <img :src="companyIcon" class="h-6 w-6 mr-2" />
+            <p class="text-gray-600">{{user.company.name}}</p>
+          </div>
+          <div class="flex items-center p-2">
+            <img :src="websiteIcon" class="h-6 w-6 mr-2" />
+            <a class="text-xs text-gray-600">
+              {{ user.website }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -27,11 +32,23 @@
 </template>
 
 <script>
+// icons 
+import companyIcon from '@/assets/icons/company.png'
+import websiteIcon from '@/assets/icons/website.png'
+import locationIcon from '@/assets/icons/location.png'
+
 export default {
   props: {
     user: {
       type: Object,
       required: true
+    }
+  },
+  data() {
+    return {
+      companyIcon,
+      websiteIcon,
+      locationIcon
     }
   }
 }

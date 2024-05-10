@@ -5,7 +5,6 @@
   <img :src="BackIcon" alt="Go Back" />
 </button>
 </div>
-    <a @click="goBack">Go Back</a>
     <h1>Album Page</h1>
     <p>User ID: {{ userId }}</p>
   </div>
@@ -35,7 +34,7 @@ export default {
     return {
       userId,
       goBack,
-      BackIcon // Export BackIcon here
+      BackIcon 
     }
   }
 }
