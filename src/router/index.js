@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 import UsersComponent from '@/components/Users.vue'
 import TodoPage from '@/components/TodoPage.vue'
+import AlbumPage from '@/components/AlbumPage.vue'
+import PostsPage from '@/components/PostsPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -11,6 +13,8 @@ const router = createRouter({
       children: [
         { path: "", component: UsersComponent },
         { path: "todo/:id", component: TodoPage, name: "Todo"},
+        { path: "albums/:id", component: AlbumPage, name: "Albums"},
+        { path: "posts/:id", component: PostsPage, name: "Posts"},
       ]
     },
     //{ path: "/users", component: UsersComponent },

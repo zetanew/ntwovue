@@ -11,8 +11,8 @@
         <!-- Menu Items -->
         <ul>
           <li @click="navigateToTodo">Todos</li>
-          <li><router-link :to="`/posts/${selectedUser.id}`">Posts</router-link></li>
-          <li><router-link :to="`/albums/${selectedUser.id}`">Albums</router-link></li>
+          <li @click="navigateToPosts">Posts</li>
+          <li @click="navigateToAlbums">Albums</li>
         </ul>
       </div>
       <div v-else>
@@ -50,6 +50,18 @@ const selectedUser = computed(() => userStore.selectedUser)
 const navigateToTodo = () => {
   if (selectedUser.value) {
     router.push({ name: 'Todo', params: { id: selectedUser.value.id } })
+  }
+}
+
+const navigateToPosts = () => {
+  if (selectedUser.value) {
+    router.push({ name: 'Posts', params: { id: selectedUser.value.id } })
+  }
+}
+
+const navigateToAlbums = () => {
+  if (selectedUser.value) {
+    router.push({ name: 'Albums', params: { id: selectedUser.value.id } })
   }
 }
 </script>
