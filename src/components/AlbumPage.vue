@@ -8,10 +8,14 @@
     <div v-if="userDetails">
       <div v-if="albums">
         <h1 class="text-2xl font-bold mb-4">Albums</h1>
-        // list albums 
-
-
-
+        <div class="grid grid-cols-4 gap-4">
+          <div v-for="album in albums" :key="album.id" class="rounded overflow-hidden shadow-lg transform transition-all duration-200 hover:scale-110">
+            <img :src="`https://picsum.photos/200/200?random=${album.id}`" alt="Album cover" class="w-full object-cover">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">{{ album.title }}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -29,10 +33,7 @@ export default {
     const userStore = useUserStore()
     const userId = ref(null)
 
-    onMounted(() => {
-      userId.value = route.params.id
-      userStore.fetchUserDetails(userId.value)
-    })
+
 
     const goBack = () => {
       //userStore.selectUser(null)
