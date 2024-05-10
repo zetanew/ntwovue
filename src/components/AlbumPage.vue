@@ -35,7 +35,7 @@ export default {
     })
 
     const goBack = () => {
-      userStore.selectUser(null)
+      //userStore.selectUser(null)
       router.push('/')
     }
 
