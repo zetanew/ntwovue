@@ -8,7 +8,7 @@
           <h2>{{ selectedUser.name }}</h2>
           <!-- Other user details -->
         </div>
-         Menu Items 
+        <!-- Menu Items -->
         <ul>
           <li><router-link :to="`/todos/${selectedUser.id}`">Todos</router-link></li>
           <li><router-link :to="`/posts/${selectedUser.id}`">Posts</router-link></li>
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import { getAllUsers } from '@/api/Http'
 import { useUserStore } from '@/store/userStore'
 
@@ -43,5 +43,5 @@ const selectUser = (user) => {
   userStore.selectUser(user)
 }
 
-const selectedUser = userStore.selectedUser
+const selectedUser = computed(() => userStore.selectedUser)
 </script>

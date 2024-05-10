@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 import UsersComponent from '@/components/Users.vue'
+import TodoPage from '@/components/TodoPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -9,6 +10,7 @@ const router = createRouter({
       component: HomePage,
       children: [
         { path: "", component: UsersComponent },
+        { path: "todo/:id", component: TodoPage, name: "Todo"},
       ]
     },
     //{ path: "/users", component: UsersComponent },
