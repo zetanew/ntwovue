@@ -18,9 +18,7 @@ export const getUserDetails =async(userId) => {
         const post = await axiosInstance.get(endPoints.postUser + `${userId}`);
         const album = await axiosInstance.get(endPoints.albumUser + `${userId}`);
         const todos = await axiosInstance.get(endPoints.todosUser + `${userId}`);
-        console.log(post);
-        console.log(album);
-        console.log(todos);
+        console.log("todos here " , todos);
        const reponse = {
             post: post.data,
             album: album.data,

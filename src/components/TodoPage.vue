@@ -5,19 +5,22 @@
         <img :src="BackIcon" alt="Go Back" />
       </button>
     </div>
-    <h1>Todo Page</h1>
-    <p>User ID: {{ userId }}</p>
     <div v-if="userDetails">
-      <h2>User Details:</h2>
-      <p>Name: {{ userDetails.name }}</p>
-      <p>Email: {{ userDetails.email }}</p>
-      <!-- Add more fields as needed -->
+      <div v-if="todos">
+        <h1 class="text-2xl font-bold mb-4">Todos</h1>
+        <ul>
+          <li v-for="todo in todos" :key="todo.id" class="p-2 my-2 rounded shadow flex items-center">
+            <input type="checkbox" v-model="todo.completed" :class="todo.completed ? 'bg-purple-500' : 'bg-gray-500'" class="form-checkbox h-5 w-5 text-gray-600">
+            <p class="ml-2 text-black">{{ todo.title }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '@/store/userStore'
 import BackIcon from '@/assets/icons/back.png'
@@ -38,11 +41,16 @@ export default {
       router.push('/')
     }
 
+    const todos = computed(() => {
+      return userStore.userDetails ? userStore.userDetails.todos : null
+    })
+
     return {
       userId,
       goBack,
       BackIcon,
-      userDetails: userStore.userDetails
+      userDetails: userStore.userDetails,
+      todos
     }
   }
 }
