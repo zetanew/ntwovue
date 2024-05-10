@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
-import { getAllUsers } from '@/api/Http'
+import { getAllUsers, getUserDetails } from '@/api/Http'
 
 export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
     selectedUser: null,
     users: [],
-    loading: true
+    loading: true,
+    userDetails: {}
   }),
   actions: {
     selectUser(user) {
@@ -17,6 +18,9 @@ export const useUserStore = defineStore({
       this.users = await getAllUsers()
       this.loading = false;
       console.log("after api call" ,this.loading)
+    },
+    async fetchUserDetails(userId) {
+      this.userDetails = await getUserDetails(userId)
     }
   }
 })

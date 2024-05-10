@@ -1,6 +1,10 @@
 <template>
   <div>
-    <a @click="goBack">Go Back</a>
+    <div @click="goBack" class="menu-item">
+<button class="flex items-center hover:border-l-4 hover:border-purple-500 hover:bg-purple-100 rounded p-2 transition-all duration-200 w-full">
+  <img :src="BackIcon" alt="Go Back" />
+</button>
+</div>
     <h1>Todo Page</h1>
     <p>User ID: {{ userId }}</p>
   </div>
@@ -10,7 +14,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '@/store/userStore'
-
+import BackIcon from '@/assets/icons/back.png'
 export default {
   setup() {
     const route = useRoute()
@@ -29,7 +33,8 @@ export default {
 
     return {
       userId,
-      goBack
+      goBack,
+      BackIcon 
     }
   }
 }
