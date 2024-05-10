@@ -10,7 +10,7 @@
         </div>
         <!-- Menu Items -->
         <ul>
-          <li><router-link :to="`/todos/${selectedUser.id}`">Todos</router-link></li>
+          <li @click="navigateToTodo">Todos</li>
           <li><router-link :to="`/posts/${selectedUser.id}`">Posts</router-link></li>
           <li><router-link :to="`/albums/${selectedUser.id}`">Albums</router-link></li>
         </ul>
@@ -29,10 +29,12 @@
 
 <script setup>
 import { onMounted, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { getAllUsers } from '@/api/Http'
 import { useUserStore } from '@/store/userStore'
 
 const userStore = useUserStore()
+const router = useRouter()
 
 onMounted(async () => {
   const users = await getAllUsers() // Fetch users from API
@@ -44,4 +46,10 @@ const selectUser = (user) => {
 }
 
 const selectedUser = computed(() => userStore.selectedUser)
+
+const navigateToTodo = () => {
+  if (selectedUser.value) {
+    router.push({ name: 'Todo', params: { id: selectedUser.value.id } })
+  }
+}
 </script>
