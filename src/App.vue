@@ -67,8 +67,9 @@ onMounted(async () => {
   localStorage.setItem('users', JSON.stringify(users)) // Save users to local storage
 })
 
-const selectUser = (user) => {
+const selectUser = async (user) => {
   userStore.selectUser(user)
+  await userStore.fetchUserDetails(user.id)
 }
 
 const selectedUser = computed(() => userStore.selectedUser)
@@ -93,6 +94,7 @@ const navigateToAlbums = () => {
 
 const navigateToHome = () => {
   userStore.selectUser(null)
+  userStore.clearUserDetails(null)
   router.push({ name: 'Users' })
 }
 </script>

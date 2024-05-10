@@ -16,14 +16,14 @@ export const getUserDetails =async(userId) => {
 
     try {
         const post = await axiosInstance.get(endPoints.postUser + `${userId}`);
-        const albume = await axiosInstance.get(endPoints.albumUser + `${userId}`);
+        const album = await axiosInstance.get(endPoints.albumUser + `${userId}`);
         const todos = await axiosInstance.get(endPoints.todosUser + `${userId}`);
         console.log(post);
-        console.log(albume);
+        console.log(album);
         console.log(todos);
        const reponse = {
             post: post.data,
-            album: albume.data,
+            album: album.data,
             todos: todos.data
         }
         return reponse;

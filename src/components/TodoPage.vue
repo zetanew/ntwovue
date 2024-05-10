@@ -1,12 +1,18 @@
 <template>
   <div>
     <div @click="goBack" class="menu-item">
-<button class="flex items-center hover:border-l-4 hover:border-purple-500 hover:bg-purple-100 rounded p-2 transition-all duration-200 w-full">
-  <img :src="BackIcon" alt="Go Back" />
-</button>
-</div>
+      <button class="flex items-center hover:border-l-4 hover:border-purple-500 hover:bg-purple-100 rounded p-2 transition-all duration-200 w-full">
+        <img :src="BackIcon" alt="Go Back" />
+      </button>
+    </div>
     <h1>Todo Page</h1>
     <p>User ID: {{ userId }}</p>
+    <div v-if="userDetails">
+      <h2>User Details:</h2>
+      <p>Name: {{ userDetails.name }}</p>
+      <p>Email: {{ userDetails.email }}</p>
+      <!-- Add more fields as needed -->
+    </div>
   </div>
 </template>
 
@@ -24,6 +30,7 @@ export default {
 
     onMounted(() => {
       userId.value = route.params.id
+      userStore.fetchUserDetails(userId.value)
     })
 
     const goBack = () => {
@@ -34,7 +41,8 @@ export default {
     return {
       userId,
       goBack,
-      BackIcon 
+      BackIcon,
+      userDetails: userStore.userDetails
     }
   }
 }
